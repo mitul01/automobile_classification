@@ -24,6 +24,7 @@ def home():
 @cross_origin()
 def predictRoute():
     image = request.json['image']
+    clApp = ClientApp()
     decodeImage(image, clApp.filename)
     result = clApp.classifier.prediction()
     return jsonify(result)
@@ -31,5 +32,4 @@ def predictRoute():
 
 #port = int(os.getenv("PORT"))
 if __name__ == "__main__":
-    clApp = ClientApp()
     app.run()
